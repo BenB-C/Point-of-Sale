@@ -1,0 +1,18 @@
+<h2>Cart</h2>
+
+<ul>
+  <% if @products.any? %>
+    <% @products.each do |product| %>
+      <li><%= product.name %> | $<%= product.price %><br><%= product.description %></li>
+      <%= link_to "Remove from Cart", product_path(product), :data => {:method => "patch"} %>
+      <% end %>
+      <h5>Total: <%= @total %></h5>
+      <%= form_for @purchase do |f| %>
+        <%= f.submit %>
+      <% end %>
+  <% else %>
+    <p>There are no products at this time.</p>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Home', products_path %></p>

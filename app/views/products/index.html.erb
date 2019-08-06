@@ -1,0 +1,19 @@
+<div class="jumbotron">
+  <h1>Available Products:</h1>
+</div>
+<ul>
+  <% if @products.any? %>
+    <% @products.each do |product| %>
+      <li><%= product.name %> | $<%= product.price %><br><%= product.description %></li>
+      <%= link_to "Edit Product", edit_product_path(product) %>
+      <%= link_to "Add to Cart", product_path(product), :data => {:method => "patch"} %>
+      <% end %>
+  <% else %>
+    <p>There are no products at this time.</p>
+  <% end %>
+</ul>
+
+<p><%= link_to "Add a purchase", new_purchase_path %></p>
+<p><%= link_to "View Cart", new_purchase_path %></p>
+
+<p><%= link_to "All Purchases", purchases_path %></p>

@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <h1>Purchases:</h1>
+</div>
+<ul>
+  <% if @purchases.any? %>
+    <% @purchases.each do |purchase| %>
+      <li>id: <%= purchase.id %> | date: <%= purchase.date %></li>
+      <!-- <%= link_to "Edit purchase", edit_purchase_path(purchase) %>
+      <%= link_to "Add to Cart", purchase_path(purchase), :data => {:add_to_cart => true, :method => "patch"} %> -->
+    <% end %>
+    <p>Total: <%= @total %></p>
+  <% else %>
+    <p>There are no purchases at this time.</p>
+  <% end %>
+</ul>
+<!--
+<p><%= link_to "Edit Date Range", edit_purchase_path(1) %></p> -->
+
+<p><%= link_to "Add a purchase", new_purchase_path %></p>
+<p><%= link_to "View Cart", new_purchase_path %></p>
+
+<p><%= link_to "All Purchases", purchases_path %></p>
